@@ -5,12 +5,15 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public GameData Data;
+    public HCGameSetting GameSetting;
     public bool GameInited = false;
 
     private int secondToRemindComeback = 0;
 
     public void Start()
     {
+        GameSetting = HCTools.GetGameSetting();
+
         LoadGameData();
 
         SetupPushNotification();
@@ -115,6 +118,8 @@ public class GameManager : Singleton<GameManager>
 
         Database.SaveData();
     }
+
+    public string GameVersion => string.Format("{0}.{1}.{2}", GameSetting.GameVersion, GameSetting.BundleVersion, GameSetting.BuildVersion);
 
     public static void DestroyChildren(Transform trans)
     {

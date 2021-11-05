@@ -10,10 +10,12 @@ public class MaxMediationController : MonoBehaviour
     public AdManager adsManager;
 
     private const string MaxSdkKey = "7PspscCcbGd6ohttmPcZTwGmZCihCW-Jwr7nSJN2a_9Mg0ERPs0tmGdKTK1gs__nr6XHQvK0vTNaTb1uR1mCIN";
-    private const string InterstitialAdUnitId = "eddf03ebfe06b63f";
-    private const string RewardedAdUnitId = "d83ac977cfb61536";
+
+    private string InterstitialAdUnitId;
+    private string RewardedAdUnitId;
+    private string BannerAdUnitId;
+
     private const string RewardedInterstitialAdUnitId = "ENTER_REWARD_INTER_AD_UNIT_ID_HERE";
-    private const string BannerAdUnitId = "2a2856a4c53be9c3";
     private const string MRecAdUnitId = "";
 
 
@@ -28,6 +30,10 @@ public class MaxMediationController : MonoBehaviour
 
     public void Init()
     {
+        InterstitialAdUnitId = GameManager.Instance.GameSetting.InterAd;
+        RewardedAdUnitId = GameManager.Instance.GameSetting.RewardedAd;
+        BannerAdUnitId = GameManager.Instance.GameSetting.BannerAd;
+
         MaxSdkCallbacks.OnSdkInitializedEvent += sdkConfiguration =>
         {
             // AppLovin SDK is initialized, configure and start loading ads.

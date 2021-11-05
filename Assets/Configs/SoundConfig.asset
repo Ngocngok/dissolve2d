@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes: []
   VolumeSFX: 1
   VolumeBGM: 0.5
-  clips:
+  ListSfx:
   - m_audioClip: {fileID: 8300000, guid: 3465004066aa7aa4ca86d46f58ee88dc, type: 3}
     m_typeSound: 0
   - m_audioClip: {fileID: 8300000, guid: e592f595813944846a81cecf757c815e, type: 3}
@@ -42,4 +42,7 @@ MonoBehaviour:
     m_typeSound: 7
   - m_audioClip: {fileID: 8300000, guid: 4300af5246fb61d48b8b3803fb15515b, type: 3}
     m_typeSound: 8
+  ListBgm:
+  - name: 
+    track: {fileID: 0}
   path: Assets/Sounds

@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3c37a6fb423ec4a853d524dcfcd3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameSetting: {fileID: 0}
   GameInited: 0
 --- !u!4 &845591240
 Transform:
@@ -371,7 +372,6 @@ MonoBehaviour:
     SerializationNodes: []
   music: {fileID: 845591244}
   sfx: {fileID: 845591243}
-  audioLibrary: {fileID: 11400000, guid: d3ee8d98366a06a41a3dee4ae79bd450, type: 2}
   tracks:
   - name: 1
     track: {fileID: 8300000, guid: 49f69c43507231944a32b21084b8dd3c, type: 3}
@@ -783,6 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Game: {fileID: 11400000, guid: 22ed8d63c1f50e749abfa4ae219d972d, type: 2}
+  Audio: {fileID: 11400000, guid: d3ee8d98366a06a41a3dee4ae79bd450, type: 2}
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 

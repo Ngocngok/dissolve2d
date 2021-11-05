@@ -51,7 +51,7 @@ public class HCTools : Editor
 
     #region Build
 
-    [MenuItem("HyperCat Toolkit/Build Android/Validate Player Setting")]
+    [MenuItem("HyperCat Toolkit/Build Android/Verify Player Setting")]
     public static void ValidatePlayerSetting()
     {
         PlayerSettings.companyName = "HyperCat";
@@ -213,6 +213,16 @@ public class HCTools : Editor
     [MenuItem("HyperCat Toolkit/UI/New Screen")]
     public static void CreateNewScreen()
     {
+    }
+
+    #endregion
+    
+    #region Splash Scene
+
+    [MenuItem("HyperCat Toolkit/Verify Splash Scene")]
+    public static void VerifySplashScene()
+    {
+        
     }
 
     #endregion

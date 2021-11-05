@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using G2.Sdk.Services.Ads;
 using RocketTeam.Sdk.Services.Interfaces;
 
-//using G2.Sdk.Utils;
 public enum RewardAdStatus
 {
     NoInternet,
@@ -25,6 +24,7 @@ namespace RocketTeam.Sdk.Services.Ads
         public MaxMediationController MaxMediation;
 
         public Action onLoaded { get; set; }
+
         public Action<string> onFailedToLoad { get; set; }
         public Action onOpening { get; set; }
         public Action onClosed { get; set; }
@@ -35,7 +35,6 @@ namespace RocketTeam.Sdk.Services.Ads
         {
             if (Instance == null)
             {
-                //SdkManager.Instance.RegisterService(ServiceType.ADVERTISEMENT, this);
                 Instance = this;
                 DontDestroyOnLoad(this);
 

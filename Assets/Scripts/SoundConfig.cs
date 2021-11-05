@@ -13,9 +13,11 @@ public class SoundConfig : SerializedScriptableObject
 
     [SerializeField]
     [TableList(DrawScrollView = false, ShowPaging = true, NumberOfItemsPerPage = 25, ShowIndexLabels = true)] //(AlwaysExpanded = true)]
-    private List<HCAudioClip> clips = null;
+    public List<Sfx> ListSfx = new List<Sfx>();
 
-    public List<HCAudioClip> Clips => clips;
+    [SerializeField]
+    [TableList(DrawScrollView = false, ShowPaging = true, NumberOfItemsPerPage = 25, ShowIndexLabels = true)] //(AlwaysExpanded = true)]
+    public List<Bgm> ListBgm = new List<Bgm>();
 
     private Dictionary<TYPE_SOUND, AudioClip> dictAudioClip;
 
@@ -29,10 +31,10 @@ public class SoundConfig : SerializedScriptableObject
     {
         if (dictAudioClip == null)
         {
-            dictAudioClip = new Dictionary<TYPE_SOUND, AudioClip>(Clips.Count);
-            for (int i = 0; i < Clips.Count; i++)
+            dictAudioClip = new Dictionary<TYPE_SOUND, AudioClip>(ListSfx.Count);
+            for (int i = 0; i < ListSfx.Count; i++)
             {
-                dictAudioClip.Add(Clips[i].m_typeSound, Clips[i].Audioclip);
+                dictAudioClip.Add(ListSfx[i].m_typeSound, ListSfx[i].Audioclip);
             }
         }
 
@@ -44,22 +46,6 @@ public class SoundConfig : SerializedScriptableObject
         }
     }
 
-    [Serializable]
-    public class HCAudioClip
-    {
-        [SerializeField, TableColumnWidth(250, Resizable = false)]
-        private AudioClip m_audioClip = null;
-
-        [SerializeField, TableColumnWidth(150)]
-        public TYPE_SOUND m_typeSound;
-
-        public AudioClip Audioclip
-        {
-            get => m_audioClip;
-            set => m_audioClip = value;
-        }
-    }
-
 #if UNITY_EDITOR
     [FolderPath]
     public string path = "Assets/Sounds";
@@ -67,7 +53,7 @@ public class SoundConfig : SerializedScriptableObject
     [Button]
     public void GenerateSFX()
     {
-        clips.Clear();
+        ListSfx.Clear();
         string[] fileEntries = Directory.GetFiles(path);
         int index = 0;
         for (int i = 0; i < fileEntries.Length; i++)
@@ -76,14 +62,37 @@ public class SoundConfig : SerializedScriptableObject
             {
                 AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>(fileEntries[i].Replace("\\", "/"));
 
-                var hc = new HCAudioClip();
+                var hc = new Sfx();
                 hc.Audioclip = clip;
                 hc.m_typeSound = (TYPE_SOUND) index;
-                clips.Add(hc);
+                ListSfx.Add(hc);
 
                 index++;
             }
         }
     }
 #endif
+}
+
+[System.Serializable]
+public class Bgm
+{
+    public string name;
+    public AudioClip track;
+}
+
+[Serializable]
+public class Sfx
+{
+    [SerializeField, TableColumnWidth(250, Resizable = false)]
+    private AudioClip m_audioClip = null;
+
+    [SerializeField, TableColumnWidth(150)]
+    public TYPE_SOUND m_typeSound;
+
+    public AudioClip Audioclip
+    {
+        get => m_audioClip;
+        set => m_audioClip = value;
+    }
 }

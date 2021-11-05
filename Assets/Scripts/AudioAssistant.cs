@@ -17,9 +17,7 @@ public class AudioAssistant : SerializedMonoBehaviour
     [SerializeField]
     AudioSource sfx;
 
-    private SoundConfig audioLibrary;
-    public List<MusicTrack> tracks = new List<MusicTrack>();
-    public List<MusicTrack> bossTracks = new List<MusicTrack>();
+    private SoundConfig soundCfg;
     static List<TYPE_SOUND> mixBuffer = new List<TYPE_SOUND>(32);
     static float mixBufferClearDelay = 0.05f;
     static float timeUnScaleDentaTime = 0.02f;
@@ -49,8 +47,8 @@ public class AudioAssistant : SerializedMonoBehaviour
         }
         else
         {
-            sfx.volume = 1;
-            music.volume = 0.45f;
+            sfx.volume = soundCfg.VolumeSFX;
+            music.volume = soundCfg.VolumeBGM;
         }
     }
 
@@ -64,7 +62,7 @@ public class AudioAssistant : SerializedMonoBehaviour
             }
             else
             {
-                return 0.45f;
+                return soundCfg.VolumeBGM;
             }
         }
     }
@@ -80,7 +78,7 @@ public class AudioAssistant : SerializedMonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
-        audioLibrary = ConfigManager.Instance.Audio;
+        soundCfg = ConfigManager.Instance.Audio;
 
         StartCoroutine(MixBufferRoutine());
     }
@@ -105,18 +103,15 @@ public class AudioAssistant : SerializedMonoBehaviour
     // Launching a music track
     public void PlayMusic(string trackName, float delay = .3f, float delayStartFadeOut = 0f)
     {
-        if (trackName != System.String.Empty)
+        if (trackName != string.Empty)
             currentTrack = trackName;
+
         AudioClip to = null;
-        if (trackName != System.String.Empty)
+        if (trackName != string.Empty)
         {
-            List<MusicTrack> listTrack = new List<MusicTrack>(1);
+            List<Bgm> listTrack = new List<Bgm>(1);
 
-            foreach (MusicTrack track in tracks)
-                if (track.name == trackName)
-                    listTrack.Add(track);
-
-            foreach (MusicTrack track in bossTracks)
+            foreach (Bgm track in soundCfg.ListBgm)
                 if (track.name == trackName)
                     listTrack.Add(track);
 
@@ -130,12 +125,7 @@ public class AudioAssistant : SerializedMonoBehaviour
 
     public void PlayRandomMusic()
     {
-        PlayMusic(tracks.PickRandom().name);
-    }
-
-    public void PlayRandomBossMusic()
-    {
-        PlayMusic(bossTracks.PickRandom().name);
+        PlayMusic(soundCfg.ListBgm.PickRandom().name);
     }
 
     // A smooth transition from one to another music
@@ -177,8 +167,8 @@ public class AudioAssistant : SerializedMonoBehaviour
         if (typeSound != TYPE_SOUND.NONE && !mixBuffer.Contains(typeSound))
         {
             mixBuffer.Add(typeSound);
-            if (instance != null && instance.sfx != null && instance.audioLibrary.GetAudio(typeSound) != null)
-                instance.sfx.PlayOneShot(instance.audioLibrary.GetAudio(typeSound));
+            if (instance != null && instance.sfx != null && instance.soundCfg.GetAudio(typeSound) != null)
+                instance.sfx.PlayOneShot(instance.soundCfg.GetAudio(typeSound));
         }
     }
 
@@ -200,12 +190,5 @@ public class AudioAssistant : SerializedMonoBehaviour
     public void PlayAgain()
     {
         music.UnPause();
-    }
-
-    [System.Serializable]
-    public class MusicTrack
-    {
-        public string name;
-        public AudioClip track;
     }
 }
