@@ -14,6 +14,7 @@ using UnityEditor;
 public class ConfigManager : Singleton<ConfigManager>, ISerializationCallbackReceiver, ISupportsPrefabSerialization
 {
     public GameConfig Game;
+    public SoundConfig Audio;
 
     #region Odin
 

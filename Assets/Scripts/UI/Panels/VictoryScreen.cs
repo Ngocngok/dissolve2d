@@ -163,7 +163,6 @@ public class VictoryScreen : UIPanel
     void ProgressNext()
     {
         Root.enabled = false;
-        PopupUnlockProgress.Show();
     }
 
     void DelayBackToMain()

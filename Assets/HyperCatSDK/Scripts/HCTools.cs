@@ -9,7 +9,18 @@ using UnityEngine;
 
 public class HCTools : Editor
 {
-    public static HCGameSetting GameSetting;
+    public static HCGameSetting GameSetting
+    {
+        get
+        {
+            if (gameSetting == null)
+                gameSetting = GetGameSetting();
+
+            return gameSetting;
+        }
+    }
+
+    private static HCGameSetting gameSetting;
 
     public static HCGameSetting GetGameSetting()
     {
@@ -34,8 +45,8 @@ public class HCTools : Editor
     [MenuItem("HyperCat Toolkit/Edit Game Setting")]
     public static void EditGameSetting()
     {
-        Selection.activeObject = GetGameSetting();
-        EditorApplication.ExecuteMenuItem("Window/General/Inspector");
+        Selection.activeObject = GameSetting;
+        ShowInspector();
     }
 
     #region Build
@@ -43,9 +54,6 @@ public class HCTools : Editor
     [MenuItem("HyperCat Toolkit/Build Android/Validate Player Setting")]
     public static void ValidatePlayerSetting()
     {
-        if (GameSetting == null)
-            GameSetting = GetGameSetting();
-
         PlayerSettings.companyName = "HyperCat";
         if (Application.HasProLicense())
             PlayerSettings.SplashScreen.showUnityLogo = false;
@@ -68,8 +76,6 @@ public class HCTools : Editor
     [MenuItem("HyperCat Toolkit/Build Android/Build APK (Testing)")]
     public static void BuildAPK()
     {
-        if (GameSetting == null)
-            GameSetting = GetGameSetting();
         GameSetting.BuildVersion += 1;
         ValidatePlayerSetting();
 
@@ -97,8 +103,6 @@ public class HCTools : Editor
             return;
         }
 
-        if (GameSetting == null)
-            GameSetting = GetGameSetting();
         GameSetting.BuildVersion += 1;
         GameSetting.BundleVersion += 1;
         ValidatePlayerSetting();
@@ -128,12 +132,94 @@ public class HCTools : Editor
 
     #endregion
 
+    #region Configs
+
+    [MenuItem("HyperCat Toolkit/Configs/Game Config")]
+    public static void ShowGameConfig()
+    {
+        var cfg = GetGameConfig();
+        if (cfg == null)
+        {
+            cfg = ScriptableObject.CreateInstance<GameConfig>();
+            UnityEditor.AssetDatabase.CreateAsset(cfg, "Assets/Configs/GameConfig.asset");
+            UnityEditor.AssetDatabase.SaveAssets();
+        }
+
+        cfg = GetGameConfig();
+        Selection.activeObject = cfg;
+        ShowInspector();
+    }
+
+    public static GameConfig GetGameConfig()
+    {
+        var path = "Assets/Configs/";
+        var fileEntries = Directory.GetFiles(path);
+        for (int i = 0; i < fileEntries.Length; i++)
+        {
+            if (fileEntries[i].EndsWith(".asset"))
+            {
+                var item =
+                    AssetDatabase.LoadAssetAtPath<GameConfig>(fileEntries[i].Replace("\\", "/"));
+                if (item != null)
+                {
+                    return item;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    [MenuItem("HyperCat Toolkit/Configs/Sound Config")]
+    public static void ShowSoundConfig()
+    {
+        var cfg = GetSoundConfig();
+        if (cfg == null)
+        {
+            cfg = ScriptableObject.CreateInstance<SoundConfig>();
+            AssetDatabase.CreateAsset(cfg, "Assets/Configs/SoundConfig.asset");
+            AssetDatabase.SaveAssets();
+        }
+
+        cfg = GetSoundConfig();
+        Selection.activeObject = cfg;
+        ShowInspector();
+    }
+
+    public static SoundConfig GetSoundConfig()
+    {
+        var path = "Assets/Configs/";
+        var fileEntries = Directory.GetFiles(path);
+        for (int i = 0; i < fileEntries.Length; i++)
+        {
+            if (fileEntries[i].EndsWith(".asset"))
+            {
+                var item =
+                    AssetDatabase.LoadAssetAtPath<SoundConfig>(fileEntries[i].Replace("\\", "/"));
+                if (item != null)
+                {
+                    return item;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    #endregion
+
     #region UI Tools
+
     [MenuItem("HyperCat Toolkit/UI/New Screen")]
     public static void CreateNewScreen()
     {
     }
 
     #endregion
+
+    public static void ShowInspector()
+    {
+        EditorApplication.ExecuteMenuItem("Window/General/Inspector");
+    }
 }
 #endif

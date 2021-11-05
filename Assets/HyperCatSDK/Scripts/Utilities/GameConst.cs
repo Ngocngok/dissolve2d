@@ -6,9 +6,6 @@ using UnityEngine.Purchasing;
 
 public class GameConst
 {
-    public const string GAME_VERSION = "1.0.0";
-    public const int BUILD_VERSION_CODE = 5;
-
     public const string PACKAGE_NAME = "com.hypercat.milk";
     public const string NO_ADS_ID = PACKAGE_NAME + ".noads";
 

@@ -79,7 +79,7 @@ public class GameServices : Singleton<GameServices>
         HCDebug.Log("Firebase Inited Successfully!", HCColor.aqua);
 
         AnalyticManager.SetFirebaseUserProperties("last_login", DateTime.Now.DayOfYear.ToString());
-        AnalyticManager.SetFirebaseUserProperties("app_version", GameConst.GAME_VERSION);
+        AnalyticManager.SetFirebaseUserProperties("app_version", HCTools.GameSetting.GameVersion);
         AnalyticManager.SetFirebaseUserProperties("current_level", GameManager.Instance.Data.User.Level.ToString());
         FirebaseAnalytics.SetSessionTimeoutDuration(new TimeSpan(0, 30, 0));
 

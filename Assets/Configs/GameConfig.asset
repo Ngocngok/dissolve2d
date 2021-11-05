@@ -12,12 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43846da64aa50f1418c5007028c4f6d3, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  BoxWidth: 0.4
-  BoxHeight: 0.4
-  StepUpTime: 0.97
-  StepDownTime: 0.7
-  MaxOfflineRewardDuration: 360
   MaxOfflineRemindMinute: 720
-  GoldPerMin: 2
-  StepUpDelay: 1.6
-  StepDownDelay: 2.54

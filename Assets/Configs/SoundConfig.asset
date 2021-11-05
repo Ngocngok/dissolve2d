@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68693916c3dabb44e92a0497193f6882, type: 3}
-  m_Name: AudioClipManager
+  m_Name: SoundConfig
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,10 +21,25 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_list:
+  VolumeSFX: 1
+  VolumeBGM: 0.5
+  clips:
   - m_audioClip: {fileID: 8300000, guid: 3465004066aa7aa4ca86d46f58ee88dc, type: 3}
     m_typeSound: 0
   - m_audioClip: {fileID: 8300000, guid: e592f595813944846a81cecf757c815e, type: 3}
     m_typeSound: 1
-  ListBGM: []
+  - m_audioClip: {fileID: 8300000, guid: 6933e5f9323702449a9d7452dcad2d76, type: 3}
+    m_typeSound: 2
+  - m_audioClip: {fileID: 8300000, guid: 061c1e003e66f734f98deff329fc2c12, type: 3}
+    m_typeSound: 3
+  - m_audioClip: {fileID: 8300000, guid: c49ba01174aa7aa4884b2f2b9e042e3f, type: 3}
+    m_typeSound: 4
+  - m_audioClip: {fileID: 8300000, guid: 79ebb3176f1578842b31f3174492f1c2, type: 3}
+    m_typeSound: 5
+  - m_audioClip: {fileID: 8300000, guid: 0e9bd42a36cb0b844a7b635dad3d704d, type: 3}
+    m_typeSound: 6
+  - m_audioClip: {fileID: 8300000, guid: 1c9317638c6ac6e49ab878dce9d4fcf9, type: 3}
+    m_typeSound: 7
+  - m_audioClip: {fileID: 8300000, guid: 4300af5246fb61d48b8b3803fb15515b, type: 3}
+    m_typeSound: 8
   path: Assets/Sounds

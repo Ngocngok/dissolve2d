@@ -17,7 +17,7 @@ public class AudioAssistant : SerializedMonoBehaviour
     [SerializeField]
     AudioSource sfx;
 
-    public AudioClipManager audioLibrary;
+    private SoundConfig audioLibrary;
     public List<MusicTrack> tracks = new List<MusicTrack>();
     public List<MusicTrack> bossTracks = new List<MusicTrack>();
     static List<TYPE_SOUND> mixBuffer = new List<TYPE_SOUND>(32);
@@ -80,9 +80,7 @@ public class AudioAssistant : SerializedMonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
-        AudioSource[] sources = GetComponents<AudioSource>();
-        music = sources[0];
-        sfx = sources[1];
+        audioLibrary = ConfigManager.Instance.Audio;
 
         StartCoroutine(MixBufferRoutine());
     }

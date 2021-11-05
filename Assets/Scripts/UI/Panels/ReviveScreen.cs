@@ -114,7 +114,6 @@ public class ReviveScreen : UIPanel
     void ProgressNext()
     {
         Root.enabled = false;
-        PopupUnlockProgress.Show();
     }
 
     bool HasRewardToUnlock()

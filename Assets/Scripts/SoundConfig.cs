@@ -5,18 +5,17 @@ using UnityEditor;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = ("Data/Manager/AudioClipManager"), fileName = "AudioClipManager")]
-public class AudioClipManager : SerializedScriptableObject
+[CreateAssetMenu(menuName = ("Configs/Sounds"), fileName = "SoundConfig")]
+public class SoundConfig : SerializedScriptableObject
 {
+    public float VolumeSFX = 1f;
+    public float VolumeBGM = 0.5f;
+
     [SerializeField]
     [TableList(DrawScrollView = false, ShowPaging = true, NumberOfItemsPerPage = 25, ShowIndexLabels = true)] //(AlwaysExpanded = true)]
-    private List<UniAudioClip> m_list = null;
+    private List<HCAudioClip> clips = null;
 
-    public List<UniAudioClip> ListBGM;
-    public List<UniAudioClip> List
-    {
-        get { return m_list; }
-    }
+    public List<HCAudioClip> Clips => clips;
 
     private Dictionary<TYPE_SOUND, AudioClip> dictAudioClip;
 
@@ -30,10 +29,10 @@ public class AudioClipManager : SerializedScriptableObject
     {
         if (dictAudioClip == null)
         {
-            dictAudioClip = new Dictionary<TYPE_SOUND, AudioClip>(List.Count);
-            for (int i = 0; i < List.Count; i++)
+            dictAudioClip = new Dictionary<TYPE_SOUND, AudioClip>(Clips.Count);
+            for (int i = 0; i < Clips.Count; i++)
             {
-                dictAudioClip.Add(List[i].m_typeSound, List[i].Audioclip);
+                dictAudioClip.Add(Clips[i].m_typeSound, Clips[i].Audioclip);
             }
         }
 
@@ -46,7 +45,7 @@ public class AudioClipManager : SerializedScriptableObject
     }
 
     [Serializable]
-    public class UniAudioClip
+    public class HCAudioClip
     {
         [SerializeField, TableColumnWidth(250, Resizable = false)]
         private AudioClip m_audioClip = null;
@@ -63,11 +62,12 @@ public class AudioClipManager : SerializedScriptableObject
 
 #if UNITY_EDITOR
     [FolderPath]
-    public string path;
+    public string path = "Assets/Sounds";
+
     [Button]
     public void GenerateSFX()
     {
-        m_list.Clear();
+        clips.Clear();
         string[] fileEntries = Directory.GetFiles(path);
         int index = 0;
         for (int i = 0; i < fileEntries.Length; i++)
@@ -76,10 +76,10 @@ public class AudioClipManager : SerializedScriptableObject
             {
                 AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>(fileEntries[i].Replace("\\", "/"));
 
-                UniAudioClip uni = new UniAudioClip();
-                uni.Audioclip = clip;
-                uni.m_typeSound = (TYPE_SOUND) index;
-                m_list.Add(uni);
+                var hc = new HCAudioClip();
+                hc.Audioclip = clip;
+                hc.m_typeSound = (TYPE_SOUND) index;
+                clips.Add(hc);
 
                 index++;
             }

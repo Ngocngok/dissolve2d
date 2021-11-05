@@ -89,7 +89,7 @@ public class MainScreen : UIPanel
         }
 
         AudioAssistant.Shot(TYPE_SOUND.BUTTON);
-        PopupShop.Show();
+        // PopupShop.Show();
     }
 
     public void ShowWeapon()
@@ -101,7 +101,7 @@ public class MainScreen : UIPanel
         }
 
         AudioAssistant.Shot(TYPE_SOUND.BUTTON);
-        PopupShop.Show(false);
+        // PopupShop.Show(false);
     }
 
     public void StartGame()

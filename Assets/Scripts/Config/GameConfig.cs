@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameConfig", menuName = "Configs/Game")]
 public class GameConfig : ScriptableObject
 {
-    public int MaxOfflineRemindMinute;
+    public int MaxOfflineRemindMinute = 720;
 }
