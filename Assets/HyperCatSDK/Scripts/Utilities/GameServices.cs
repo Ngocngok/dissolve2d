@@ -2,6 +2,7 @@
 using Firebase;
 using Firebase.Analytics;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,7 @@ using Firebase.Crashlytics;
 using UnityEditor;
 using Firebase.Messaging;
 using System.Threading.Tasks;
+using RocketTeam.Sdk.Services.Ads;
 
 #endif
 
@@ -43,6 +45,16 @@ public class GameServices : Singleton<GameServices>
 #endif
         AppsFlyer.initSDK(GameConst.APPFLYER_APP_KEY, "");
         AppsFlyer.startSDK();
+
+        StartCoroutine(SyncWithGameManager());
+    }
+
+    IEnumerator SyncWithGameManager()
+    {
+        if (!GameManager.Instance.GameInited)
+            yield return null;
+
+        AdManager.Instance.Init();
     }
 
     void InitFirebase()

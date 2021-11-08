@@ -15,7 +15,7 @@ public class HCGameSetting : ScriptableObject
     public string BuildPath = "D:/HyperCat Build/";
 
     [Space, Header("Ads IDs")]
-    public string AdmobID;
+    public string AdmobAndroidID;
 
     public string FacebookAppID;
     public string InterAd;

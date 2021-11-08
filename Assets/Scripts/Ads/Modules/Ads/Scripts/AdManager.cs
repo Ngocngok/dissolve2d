@@ -37,8 +37,6 @@ namespace RocketTeam.Sdk.Services.Ads
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
-
-                Init();
             }
             else
             {

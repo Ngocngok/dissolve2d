@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b01b1668254094cb8dbca85a5d491f, type: 3}
   m_Name: HCGameSetting
   m_EditorClassIdentifier: 
+  GameName: Prototype
   GameVersion: 1.0
   BuildVersion: 0
   BundleVersion: 0
   PackageName: com.hyperat.prototype
+  BuildPath: D:/HyperCat Build/
+  AdmobAndroidID: ca-app-pub-6336405384015455~4515793760
+  FacebookAppID: 546727829902888
+  InterAd: 123123123
+  RewardedAd: 12312312312
+  BannerAd: 123123
