@@ -208,18 +208,9 @@ public class HCTools : Editor
 
     #endregion
 
-    #region UI Tools
-
-    [MenuItem("HyperCat Toolkit/UI/New Screen")]
-    public static void CreateNewScreen()
-    {
-    }
-
-    #endregion
-
     #region Third-party SDK
 
-    [MenuItem("HyperCat Toolkit/Verify Ads Ids")]
+    [MenuItem("HyperCat Toolkit/Third-party Sdk/Verify Ads Ids")]
     public static void VerifyAdsIds()
     {
         FacebookSettings.AppIds[0] = GameSetting.FacebookAppID;
@@ -230,17 +221,6 @@ public class HCTools : Editor
         EditorUtility.SetDirty(AppLovinSettings.Instance);
         EditorUtility.SetDirty(FacebookSettings.Instance);
         AssetDatabase.SaveAssets();
-    }
-
-    #endregion
-
-    #region Splash Scene
-
-    [MenuItem("HyperCat Toolkit/Verify Splash Scene")]
-    public static void VerifySplashScene()
-    {
-        FacebookSettings.AppIds[0] = GameSetting.FacebookAppID;
-        FacebookSettings.AppIds[0] = GameSetting.FacebookAppID;
     }
 
     #endregion

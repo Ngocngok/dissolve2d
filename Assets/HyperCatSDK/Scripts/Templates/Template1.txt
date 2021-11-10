@@ -1,0 +1,54 @@
+using UnityEngine.UI;
+using UnityEngine;
+
+public class HC_Class_Name: UIPanel
+{
+    public override UI_PANEL GetID()
+    {
+        return UI_PANEL.HC_Class_Name;
+    }
+
+    public static HC_Class_Name Instance;
+
+    [SerializeField]
+    private Button CloseButton;
+
+    public static void Show()
+    {
+        HC_Class_Name newInstance = (HC_Class_Name) GUIManager.Instance.NewPanel(UI_PANEL.HC_Class_Name);
+        Instance = newInstance;
+        newInstance.OnAppear();
+    }
+
+    public void OnAppear()
+    {
+        if (isInited)
+            return;
+
+        base.OnAppear();
+
+        Init();
+    }
+
+    void Init()
+    {
+    }
+
+    protected override void RegisterEvent()
+    {
+        base.RegisterEvent();
+        CloseButton.onClick.AddListener(Close);
+    }
+
+    protected override void UnregisterEvent()
+    {
+        base.UnregisterEvent();
+        CloseButton.onClick.RemoveListener(Close);
+    }
+
+    public override void OnDisappear()
+    {
+        base.OnDisappear();
+        Instance = null;
+    }
+}
