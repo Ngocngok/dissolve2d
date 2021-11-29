@@ -130,10 +130,12 @@ namespace RocketTeam.Sdk.Services.Ads
                     return true;
 
                 case (int) AdEnums.ShowType.INTERSTITIAL:
+                    MaxMediation.SetWatchingAds();
                     MaxMediation.ShowInterstitial(_placement);
                     return true;
 
                 case (int) AdEnums.ShowType.VIDEO_REWARD:
+                    MaxMediation.SetWatchingAds();
                     MaxMediation.ShowRewardedAd(_placement);
                     return true;
                 default:

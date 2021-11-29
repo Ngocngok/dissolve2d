@@ -25,6 +25,7 @@
     <package>com.facebook.android:facebook-login:[8.0, 9)</package>
     <package>com.facebook.android:facebook-share:[8.0, 9)</package>
     <package>com.google.android.exoplayer:exoplayer:2.13.3</package>
+    <package>com.google.android.gms:play-services-ads:20.2.0</package>
     <package>com.google.android.gms:play-services-ads-identifier:16.0.0</package>
     <package>com.google.android.gms:play-services-base:17.6.0</package>
     <package>com.google.firebase:firebase-analytics:18.0.3</package>
@@ -49,7 +50,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
-    <setting name="bundleId" value="com.hyperat.prototype" />
+    <setting name="bundleId" value="com.hypercat.prototype" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradlePropertiesTemplateEnabled" value="True" />

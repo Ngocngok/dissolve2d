@@ -372,26 +372,6 @@ MonoBehaviour:
     SerializationNodes: []
   music: {fileID: 845591244}
   sfx: {fileID: 845591243}
-  tracks:
-  - name: 1
-    track: {fileID: 8300000, guid: 49f69c43507231944a32b21084b8dd3c, type: 3}
-  - name: 2
-    track: {fileID: 8300000, guid: 1a1adaabb3e053b43980dcad4d714366, type: 3}
-  - name: 3
-    track: {fileID: 8300000, guid: 595788d8315419643be5ffbd04f10279, type: 3}
-  - name: 4
-    track: {fileID: 8300000, guid: 4809b042ca4c55c48b4bbe9c903883f7, type: 3}
-  - name: 5
-    track: {fileID: 8300000, guid: ec4d4d5d23585254e803d731bbf75e06, type: 3}
-  - name: 6
-    track: {fileID: 8300000, guid: 905b69dcf180f544d8bc986b69f5b122, type: 3}
-  - name: 7
-    track: {fileID: 8300000, guid: 8e349711e1e8f1f49bd84b2da366b0f3, type: 3}
-  - name: 8
-    track: {fileID: 8300000, guid: ceac6cbd8d61c7244ba5d476d38e9c09, type: 3}
-  - name: 9
-    track: {fileID: 8300000, guid: 8e923a5f39865d04aa115c6f6ef90054, type: 3}
-  bossTracks: []
   currentTrack: 
 --- !u!81 &845591242
 AudioListener:
@@ -806,6 +786,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1557182786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557182788}
+  - component: {fileID: 1557182787}
+  m_Layer: 0
+  m_Name: AOALauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1557182787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557182786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb10532c8d1f3945b584749359bb526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1557182788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557182786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1613658844
 GameObject:

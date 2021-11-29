@@ -125,6 +125,7 @@ public class MaxMediationController : MonoBehaviour
         // Interstitial ad is hidden. Pre-load the next ad
         //DebugCustom.Log("Interstitial dismissed");
         LoadInterstitial();
+        ResetAds();
     }
 
     private void OnInterstitialClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -224,6 +225,7 @@ public class MaxMediationController : MonoBehaviour
         // Rewarded ad is hidden. Pre-load the next ad
         Debug.Log("Rewarded ad dismissed");
         LoadRewardedAd();
+        ResetAds();
     }
 
     private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdkBase.Reward reward, MaxSdkBase.AdInfo adInfo)
@@ -397,6 +399,18 @@ public class MaxMediationController : MonoBehaviour
     }
 
     #endregion
+
+    public void SetWatchingAds()
+    {
+        AppOpenAdManager.ResumeFromAds = true;
+        Debug.Log("=> BEGIN WATCHING ADS");
+    }
+
+    public void ResetAds()
+    {
+        AppOpenAdManager.ResumeFromAds = false;
+        Debug.Log("=> STOP WATCHING ADS");
+    }
 }
 
 [Flags]

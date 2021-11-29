@@ -170,7 +170,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.hyperat.prototype
+    Android: com.hypercat.prototype
   buildNumber: {}
   AndroidBundleVersionCode: 0
   AndroidMinSdkVersion: 19

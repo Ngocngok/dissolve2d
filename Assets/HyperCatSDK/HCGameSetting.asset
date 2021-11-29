@@ -16,7 +16,7 @@ MonoBehaviour:
   GameVersion: 1.0
   BuildVersion: 0
   BundleVersion: 0
-  PackageName: com.hyperat.prototype
+  PackageName: com.hypercat.prototype
   BuildPath: D:/HyperCat Build/
   AdmobAndroidID: ca-app-pub-6336405384015455~4515793760
   FacebookAppID: 546727829902888
