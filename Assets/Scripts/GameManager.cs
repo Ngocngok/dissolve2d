@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+#if UNITY_EDITOR
+using Sirenix.OdinInspector;
+#endif
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -10,21 +13,41 @@ public class GameManager : Singleton<GameManager>
 
     private int secondToRemindComeback = 0;
 
-    public void Start()
+#if UNITY_EDITOR
+    [Button]
+    public void GetGameConfig()
     {
         GameSetting = HCTools.GetGameSetting();
+    }
+#endif
 
+    public static bool EnableAds
+    {
+        get
+        {
+            if (RemoteConfigManager.Instance != null && !RemoteConfigManager.Instance.AdsEnabled)
+                return false;
+
+            if (Instance != null && Instance.Data != null && !Instance.Data.User.PurchasedNoAds)
+                return false;
+
+            return true;
+        }
+    }
+
+    public void Awake()
+    {
         LoadGameData();
 
         SetupPushNotification();
 
         GUIManager.Instance.Init();
 
-        Instance.GameInited = true;
-
         EventGlobalManager.Instance.OnUpdateSetting.Dispatch();
 
         SplashManager.Instance.FinishSplash();
+
+        Instance.GameInited = true;
     }
 
     private void LoadGameData()

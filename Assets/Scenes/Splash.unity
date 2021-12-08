@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3c37a6fb423ec4a853d524dcfcd3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameSetting: {fileID: 0}
+  GameSetting: {fileID: 11400000, guid: d172709798da3024bac32a854c7c7788, type: 2}
   GameInited: 0
 --- !u!4 &845591240
 Transform:

@@ -42,7 +42,7 @@ public class MainScreen : UIPanel
         base.OnAppear();
 
 #if !PROTOTYPE
-        if (!GameManager.Instance.Data.User.PurchasedNoAds)
+        if (GameManager.EnableAds)
             AdManager.Instance.ShowBanner();
 #endif
 
@@ -66,7 +66,7 @@ public class MainScreen : UIPanel
 
     private void CheckOfferNoAds()
     {
-        btnNoAds.SetActive(!GM.Data.User.PurchasedNoAds);
+        btnNoAds.SetActive(GameManager.EnableAds);
     }
 
     public void UpdateMoney()

@@ -9,15 +9,21 @@ public class AppOpenAdManager
     private const string ID_TIER_1 = "TIER_1_HERE";
     private const string ID_TIER_2 = "TIER_2_HERE";
     private const string ID_TIER_3 = "TIER_3_HERE";
+    private const string ID_TIER_4 = "TIER_4_HERE";
+    private const string ID_TIER_LAST = "TIER_ALL_PRICE_HERE";
 
 #elif UNITY_IOS
     private const string ID_TIER_1 = "";
     private const string ID_TIER_2 = "";
     private const string ID_TIER_3 = "";
+    private const string ID_TIER_4 = "";
+    private const string ID_TIER_LAST = "";
 #else
     private const string ID_TIER_1 = "";
     private const string ID_TIER_2 = "";
     private const string ID_TIER_3 = "";
+    private const string ID_TIER_4 = "";
+    private const string ID_TIER_LAST = "";
 #endif
 
     private static AppOpenAdManager instance;
@@ -33,7 +39,12 @@ public class AppOpenAdManager
     public static bool ConfigOpenApp = true;
     public static bool ConfigResumeApp = true;
 
+    public static int WaterfallTierCount = 4;
+    public static bool TestFillAOA = false;
+
     public static bool ResumeFromAds = false;
+
+    public static int TryGetAOAInterver = 10;
 
     public static AppOpenAdManager Instance
     {
@@ -54,7 +65,7 @@ public class AppOpenAdManager
 
     public void LoadAd()
     {
-        if (GameManager.Instance.Data.User.PurchasedNoAds)
+        if (!GameManager.EnableAds)
             return;
 
         LoadAOA();
@@ -67,6 +78,10 @@ public class AppOpenAdManager
             id = ID_TIER_2;
         else if (tierIndex == 3)
             id = ID_TIER_3;
+        else if (tierIndex == 4)
+            id = ID_TIER_4;
+        else if (tierIndex > WaterfallTierCount && TestFillAOA)
+            id = ID_TIER_LAST;
 
         Debug.Log("Start request Open App Ads Tier " + tierIndex);
 
@@ -79,10 +94,15 @@ public class AppOpenAdManager
                 // Handle the error.
                 Debug.LogFormat("Failed to load the ad. (reason: {0}), tier {1}", error.LoadAdError.GetMessage(), tierIndex);
                 tierIndex++;
-                if (tierIndex <= 3)
+                if (tierIndex <= (TestFillAOA ? WaterfallTierCount + 1 : WaterfallTierCount))
                     LoadAOA();
                 else
+                {
                     tierIndex = 1;
+                    AppOpenAdLauncher.Instance.TryGetAOA();
+                    showFirstOpen = true;
+                }
+
                 return;
             }
 
@@ -100,6 +120,9 @@ public class AppOpenAdManager
 
     public void ShowAdIfAvailable()
     {
+        if (!GameManager.EnableAds)
+            return;
+
         if (!IsAdAvailable || isShowingAd)
         {
             return;

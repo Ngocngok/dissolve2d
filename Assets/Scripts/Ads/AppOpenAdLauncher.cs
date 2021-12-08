@@ -3,10 +3,8 @@ using GoogleMobileAds.Api;
 
 public class AppOpenAdLauncher : Singleton<AppOpenAdLauncher>
 {
-    protected override void Awake()
+    public void Init()
     {
-        base.Awake();
-
         MobileAds.Initialize(status => { AppOpenAdManager.Instance.LoadAd(); });
     }
 
@@ -16,5 +14,15 @@ public class AppOpenAdLauncher : Singleton<AppOpenAdLauncher>
         {
             AppOpenAdManager.Instance.ShowAdIfAvailable();
         }
+    }
+
+    public void TryGetAOA()
+    {
+        Invoke(nameof(GetAOA), AppOpenAdManager.TryGetAOAInterver);
+    }
+
+    void GetAOA()
+    {
+        AppOpenAdManager.Instance.LoadAd();
     }
 }

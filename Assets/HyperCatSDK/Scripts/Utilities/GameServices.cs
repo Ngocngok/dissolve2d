@@ -55,6 +55,7 @@ public class GameServices : Singleton<GameServices>
             yield return null;
 
         AdManager.Instance.Init();
+        AppOpenAdLauncher.Instance.Init();
     }
 
     void InitFirebase()
@@ -87,6 +88,8 @@ public class GameServices : Singleton<GameServices>
     void SetupFirebase()
     {
         firebaseInited = true;
+
+        RemoteConfigManager.Instance.StartAsync();
 
         HCDebug.Log("Firebase Inited Successfully!", HCColor.aqua);
 

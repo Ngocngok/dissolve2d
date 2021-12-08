@@ -71,7 +71,7 @@ public class DefeatScreen : UIPanel
 
     void SkipLevel()
     {
-        if (GM.Data.User.PurchasedNoAds)
+        if (!GameManager.EnableAds)
             OnCompleteAds(1);
 
         // else

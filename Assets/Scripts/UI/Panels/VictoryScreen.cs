@@ -77,7 +77,7 @@ public class VictoryScreen : UIPanel
 
         HCVibrate.Haptic(HapticTypes.Success);
 #if !PROTOTYPE
-        AnalyticManager.LogEvent("Milk_win_level", "level", GM.Data.User.PurchasedNoAds.ToString());
+        AnalyticManager.LogEvent("win_level", "level", GM.Data.User.Level.ToString());
 #endif
     }
 
@@ -114,7 +114,7 @@ public class VictoryScreen : UIPanel
         myGoldLb.ChangeText(currentGold, GM.Data.User.Money, 1f);
 
 #if !PROTOTYPE
-        if (!GameManager.Instance.Data.User.PurchasedNoAds)
+        if (GameManager.EnableAds)
             AdManager.Instance.ShowInterstitial("ClaimNormal", 1);
 #endif
 
@@ -134,7 +134,7 @@ public class VictoryScreen : UIPanel
             return;
         }
 
-        if (GM.Data.User.PurchasedNoAds)
+        if (!GameManager.EnableAds)
             OnCompleteAds(1);
 #if !PROTOTYPE
         else

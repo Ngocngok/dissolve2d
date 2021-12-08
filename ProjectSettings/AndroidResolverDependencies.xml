@@ -32,6 +32,8 @@
     <package>com.google.firebase:firebase-analytics-unity:7.2.0</package>
     <package>com.google.firebase:firebase-app-unity:7.2.0</package>
     <package>com.google.firebase:firebase-common:19.5.0</package>
+    <package>com.google.firebase:firebase-config:20.0.4</package>
+    <package>com.google.firebase:firebase-config-unity:7.2.0</package>
     <package>com.google.firebase:firebase-crashlytics:17.4.1</package>
     <package>com.google.firebase:firebase-crashlytics-unity:7.2.0</package>
     <package>com.google.firebase:firebase-messaging:21.1.0</package>
@@ -43,6 +45,8 @@
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/7.2.0/firebase-analytics-unity-7.2.0.pom</file>
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/7.2.0/firebase-app-unity-7.2.0.aar</file>
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/7.2.0/firebase-app-unity-7.2.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-config-unity/7.2.0/firebase-config-unity-7.2.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-config-unity/7.2.0/firebase-config-unity-7.2.0.pom</file>
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-crashlytics-unity/7.2.0/firebase-crashlytics-unity-7.2.0.aar</file>
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-crashlytics-unity/7.2.0/firebase-crashlytics-unity-7.2.0.pom</file>
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-messaging-unity/7.2.0/firebase-messaging-unity-7.2.0.aar</file>

@@ -94,7 +94,7 @@ public class ReviveScreen : UIPanel
             return;
         }
 
-        if (GM.Data.User.PurchasedNoAds)
+        if (!GameManager.EnableAds)
             OnCompleteAdsSkip(1);
 #if !PROTOTYPE
         else
@@ -137,7 +137,7 @@ public class ReviveScreen : UIPanel
         }
 
 #if !PROTOTYPE
-        if (!GameManager.Instance.Data.User.PurchasedNoAds)
+        if (GameManager.EnableAds)
             AdManager.Instance.ShowInterstitial("Retry", 1);
 #endif
         MainScreen.Show();
@@ -152,7 +152,7 @@ public class ReviveScreen : UIPanel
             return;
         }
 
-        if (GM.Data.User.PurchasedNoAds)
+        if (!GameManager.EnableAds)
             OnCompleteAds(1);
 #if !PROTOTYPE
         else
