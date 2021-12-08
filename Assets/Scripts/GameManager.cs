@@ -45,7 +45,7 @@ public class GameManager : Singleton<GameManager>
 
         EventGlobalManager.Instance.OnUpdateSetting.Dispatch();
 
-        SplashManager.Instance.FinishSplash();
+        LoadingManager.Instance.LoadScene(SCENE_INDEX.Gameplay, () => { MainScreen.Show(); });
 
         Instance.GameInited = true;
     }
