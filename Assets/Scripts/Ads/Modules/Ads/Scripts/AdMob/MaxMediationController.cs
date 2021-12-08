@@ -71,8 +71,30 @@ public class MaxMediationController : MonoBehaviour
         MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += OnInterstitialDismissedEvent;
         MaxSdkCallbacks.Interstitial.OnAdClickedEvent += OnInterstitialClickedEvent;
         MaxSdkCallbacks.Interstitial.OnAdDisplayedEvent += OnInterstitialDisplayedEvent;
+        MaxSdkCallbacks.Interstitial.OnAdRevenuePaidEvent += OnInterstitialAdRevenuePaidEvent;
         // Load the first interstitial
         LoadInterstitial();
+    }
+
+    private void OnInterstitialAdRevenuePaidEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+    {
+        double revenue = adInfo.Revenue;
+
+        string countryCode = MaxSdk.GetSdkConfiguration().CountryCode;
+        string networkName = adInfo.NetworkName;
+        string adUnitIdentifier = adInfo.AdUnitIdentifier;
+        string placement = adInfo.Placement;
+
+        var data = new ImpressionData();
+        data.AdFormat = "interstitial";
+        data.AdUnitIdentifier = adUnitIdentifier;
+        data.CountryCode = countryCode;
+        data.NetworkName = networkName;
+        data.Placement = placement;
+        data.Revenue = revenue;
+
+        AnalyticsRevenueAds.SendEvent(data, AdFormat.interstitial);
+        Debug.Log("Inter Ad Revenue Paid");
     }
 
     public void LoadInterstitial()
@@ -157,9 +179,30 @@ public class MaxMediationController : MonoBehaviour
         MaxSdkCallbacks.Rewarded.OnAdClickedEvent += OnRewardedAdClickedEvent;
         MaxSdkCallbacks.Rewarded.OnAdHiddenEvent += OnRewardedAdDismissedEvent;
         MaxSdkCallbacks.Rewarded.OnAdReceivedRewardEvent += OnRewardedAdReceivedRewardEvent;
+        MaxSdkCallbacks.Rewarded.OnAdRevenuePaidEvent += OnRewardedAdRevenuePaidEvent;
 
         // Load the first RewardedAd
         LoadRewardedAd();
+    }
+
+    private void OnRewardedAdRevenuePaidEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+    {
+        double revenue = adInfo.Revenue;
+
+        string countryCode = MaxSdk.GetSdkConfiguration().CountryCode;
+        string networkName = adInfo.NetworkName;
+        string adUnitIdentifier = adInfo.AdUnitIdentifier;
+        string placement = adInfo.Placement;
+
+        var data = new ImpressionData();
+        data.AdFormat = "video_reward";
+        data.AdUnitIdentifier = adUnitIdentifier;
+        data.CountryCode = countryCode;
+        data.NetworkName = networkName;
+        data.Placement = placement;
+        data.Revenue = revenue;
+
+        AnalyticsRevenueAds.SendEvent(data, AdFormat.video_rewarded);
     }
 
     public void LoadRewardedAd()
@@ -347,6 +390,29 @@ public class MaxMediationController : MonoBehaviour
         MaxSdk.SetBannerExtraParameter(BannerAdUnitId, "adaptive_banner", "true");
         // Set background or background color for banners to be fully functional.
         MaxSdk.SetBannerBackgroundColor(BannerAdUnitId, new Color(0, 0, 0, 0.01f));
+
+        MaxSdkCallbacks.Banner.OnAdRevenuePaidEvent += OnBannerAdRevenuePaidEvent;
+    }
+
+    private void OnBannerAdRevenuePaidEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+    {
+        double revenue = adInfo.Revenue;
+
+        string countryCode = MaxSdk.GetSdkConfiguration().CountryCode;
+        string networkName = adInfo.NetworkName;
+        string adUnitIdentifier = adInfo.AdUnitIdentifier;
+        string placement = adInfo.Placement;
+
+        var data = new ImpressionData();
+        data.AdFormat = "banner";
+        data.AdUnitIdentifier = adUnitIdentifier;
+        data.CountryCode = countryCode;
+        data.NetworkName = networkName;
+        data.Placement = placement;
+        data.Revenue = revenue;
+
+        AnalyticsRevenueAds.SendEvent(data, AdFormat.banner);
+        Debug.Log("Banner Revenue Paid");
     }
 
     private void ToggleBannerVisibility()
