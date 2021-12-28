@@ -18,7 +18,8 @@ public class AppOpenAdLauncher : Singleton<AppOpenAdLauncher>
 
     public void TryGetAOA()
     {
-        Invoke(nameof(GetAOA), AppOpenAdManager.TryGetAOAInterver);
+        if (AppOpenAdManager.TryGetAOATime > 0)
+            Invoke(nameof(GetAOA), AppOpenAdManager.TryGetAOATime);
     }
 
     void GetAOA()

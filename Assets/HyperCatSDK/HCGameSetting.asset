@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b01b1668254094cb8dbca85a5d491f, type: 3}
   m_Name: HCGameSetting
   m_EditorClassIdentifier: 
-  GameName: Prototype
+  GameName: HyperCat SDK
   GameVersion: 1.0
   BuildVersion: 0
   BundleVersion: 0

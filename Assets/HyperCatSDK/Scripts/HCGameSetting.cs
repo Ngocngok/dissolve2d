@@ -21,4 +21,5 @@ public class HCGameSetting : ScriptableObject
     public string InterAd;
     public string RewardedAd;
     public string BannerAd;
+    public List<string> AOAListIds;
 }

@@ -26,7 +26,7 @@ public class RemoteConfigManager : Singleton<RemoteConfigManager>
         defaults.Add("WaterfallTierCount", 4);
         defaults.Add("TestFillAOA", false);
         defaults.Add("AdsEnabled", AdsEnabled);
-        defaults.Add("TryGetAOAInterver", 10);
+        defaults.Add("TryGetAOATime", 10);
 
         Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(defaults)
             .ContinueWithOnMainThread(task =>
@@ -94,9 +94,9 @@ public class RemoteConfigManager : Singleton<RemoteConfigManager>
                 .GetValue("AdsEnabled").BooleanValue;
             Debug.Log("AdsEnabled " + AdsEnabled);
 
-            AppOpenAdManager.TryGetAOAInterver = (int) Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance
-                .GetValue("TryGetAOAInterver").LongValue;
-            Debug.Log("TryGetAOAInterver " + AppOpenAdManager.TryGetAOAInterver);
+            AppOpenAdManager.TryGetAOATime = (int) Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance
+                .GetValue("TryGetAOATime").LongValue;
+            Debug.Log("TryGetAOATime " + AppOpenAdManager.TryGetAOATime);
 
             RemoteConfigReady = true;
         }

@@ -64,12 +64,21 @@ public class HCTools : Editor
 #endif
 
 #if UNITY_ANDROID
+        string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+        if (!defines.Contains("FIREBASE"))
+            defines += ";FIREBASE";
+        PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, defines);
         PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, GameSetting.PackageName);
         PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
         PlayerSettings.Android.bundleVersionCode = GameSetting.BundleVersion;
         PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
         PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevel30;
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.All;
+#elif UNITY_IOS
+        string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS);
+        if (!defines.Contains("FIREBASE"))
+            defines += ";FIREBASE";
+        PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS, defines);
 #endif
     }
 
@@ -89,7 +98,7 @@ public class HCTools : Editor
         EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
 
         var playerPath = GameSetting.BuildPath + string.Format("{0} {1}.apk", GameSetting.GameName, PlayerSettings.bundleVersion);
-        // BuildPipeline.BuildPlayer(GetScenePaths(), playerPath, BuildTarget.Android, BuildOptions.None);
+        BuildPipeline.BuildPlayer(GetScenePaths(), playerPath, BuildTarget.Android, BuildOptions.None);
     }
 
     [MenuItem("HyperCat Toolkit/Build Android/Build AAB (Submit)")]
