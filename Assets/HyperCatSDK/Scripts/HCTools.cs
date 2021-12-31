@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Facebook.Unity.Settings;
+using GoogleMobileAds.Editor;
 using UnityEditor;
 using UnityEditor.Build.Content;
 using UnityEngine;
@@ -86,6 +87,9 @@ public class HCTools : Editor
     public static void BuildAPK()
     {
         GameSetting.BuildVersion += 1;
+        EditorUtility.SetDirty(GameSetting);
+        AssetDatabase.SaveAssets();
+        VerifyAdsIds();
         ValidatePlayerSetting();
 
         PlayerSettings.Android.useCustomKeystore = false;
@@ -114,6 +118,9 @@ public class HCTools : Editor
 
         GameSetting.BuildVersion += 1;
         GameSetting.BundleVersion += 1;
+        EditorUtility.SetDirty(GameSetting);
+        AssetDatabase.SaveAssets();
+        VerifyAdsIds();
         ValidatePlayerSetting();
 
         EditorUserBuildSettings.development = false;
@@ -226,6 +233,7 @@ public class HCTools : Editor
         FacebookSettings.AppLabels[0] = GameSetting.GameName;
 
         AppLovinSettings.Instance.AdMobAndroidAppId = GameSetting.AdmobAndroidID;
+        GoogleMobileAdsSettings.Instance.GoogleMobileAdsAndroidAppId = GameSetting.AdmobAndroidID;
 
         EditorUtility.SetDirty(AppLovinSettings.Instance);
         EditorUtility.SetDirty(FacebookSettings.Instance);

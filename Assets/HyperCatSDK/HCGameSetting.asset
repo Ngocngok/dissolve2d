@@ -18,8 +18,12 @@ MonoBehaviour:
   BundleVersion: 0
   PackageName: com.hypercat.prototype
   BuildPath: D:/HyperCat Build/
-  AdmobAndroidID: ca-app-pub-6336405384015455~4515793760
-  FacebookAppID: 546727829902888
-  InterAd: 123123123
-  RewardedAd: 12312312312
-  BannerAd: 123123
+  AdmobAndroidID: Admob
+  FacebookAppID: Facebook
+  InterAd: Inter
+  RewardedAd: Reward
+  BannerAd: Banner
+  AOAListIds:
+  - 123
+  - 4546
+  - 455

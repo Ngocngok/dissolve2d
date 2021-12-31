@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 546727829902888
+  - Facebook
   appLabels:
-  - Prototype
+  - HyperCat SDK
   cookie: 1
   logging: 1
   status: 1
