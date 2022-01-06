@@ -3,7 +3,7 @@
 // (c) 2014-2019 Jean Moreno
 
 
-Shader "Toony Colors Pro 2/Desktop"
+Shader "Toony Colors Pro 2/Legacy/Desktop"
 {
 	Properties
 	{

@@ -3,7 +3,7 @@
 // (c) 2014-2019 Jean Moreno
 
 
-Shader "Toony Colors Pro 2/Mobile"
+Shader "Toony Colors Pro 2/Legacy/Mobile"
 {
 	Properties
 	{
