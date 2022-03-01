@@ -56,6 +56,7 @@ public class HCTools : Editor
     public static void ValidatePlayerSetting()
     {
         PlayerSettings.companyName = "HyperCat";
+        PlayerSettings.productName = GameSetting.GameName;
         if (Application.HasProLicense())
             PlayerSettings.SplashScreen.showUnityLogo = false;
         PlayerSettings.bundleVersion = string.Format("{0}.{1}.{2}", GameSetting.GameVersion, GameSetting.BundleVersion, GameSetting.BuildVersion);
