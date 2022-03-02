@@ -130,6 +130,24 @@ public class HCTools : Editor
             return;
         }
 
+        bool hasGoogleServiceFile = false;
+        var path = "Assets/StreamingAssets/";
+        var fileEntries = Directory.GetFiles(path);
+        for (var i = 0; i < fileEntries.Length; i++)
+        {
+            if (fileEntries[i].Contains("google-services"))
+            {
+                hasGoogleServiceFile = true;
+                break;
+            }
+        }
+
+        if (!hasGoogleServiceFile)
+        {
+            EditorUtility.DisplayDialog("HyperCat Warning", "google-services.json file not found. Please contact your manager to get the correct file!", "Yes, sir!");
+            return;
+        }
+
         GameSetting.BuildVersion += 1;
         GameSetting.BundleVersion += 1;
         EditorUtility.SetDirty(GameSetting);
