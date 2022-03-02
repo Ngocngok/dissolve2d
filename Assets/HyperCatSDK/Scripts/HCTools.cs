@@ -50,6 +50,18 @@ public class HCTools : Editor
         ShowInspector();
     }
 
+    [MenuItem("HyperCat Toolkit/Documents/SDK Manual")]
+    public static void OpenSDKManual()
+    {
+        Application.OpenURL("https://docs.google.com/document/d/1QlDfryP0HSpNj1QRlHb8OLUKmXF6m7jyIOsYl564m-s");
+    }
+
+    [MenuItem("HyperCat Toolkit/Documents/Game Requirements")]
+    public static void OpenGameRequirement()
+    {
+        Application.OpenURL("https://docs.google.com/document/d/1HBBpZSXmC4deb0iEN7TxXpe2z_kzwbeOcOUvZVprigE");
+    }
+
     #region Build
 
     [MenuItem("HyperCat Toolkit/Build Android/Verify Player Setting")]
@@ -92,6 +104,7 @@ public class HCTools : Editor
         AssetDatabase.SaveAssets();
         VerifyAdsIds();
         ValidatePlayerSetting();
+        ForceResolver();
 
         PlayerSettings.Android.useCustomKeystore = false;
 
@@ -123,6 +136,7 @@ public class HCTools : Editor
         AssetDatabase.SaveAssets();
         VerifyAdsIds();
         ValidatePlayerSetting();
+        ForceResolver();
 
         EditorUserBuildSettings.development = false;
         EditorUserBuildSettings.allowDebugging = false;
@@ -131,8 +145,7 @@ public class HCTools : Editor
 
         EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
 
-        var buildPath = "D:/HyperCat Build/";
-        var playerPath = buildPath + string.Format("{0} {1}.aab", GameSetting.GameName, PlayerSettings.bundleVersion);
+        var playerPath = GameSetting.BuildPath + string.Format("{0} {1}.aab", GameSetting.GameName, PlayerSettings.bundleVersion);
         BuildPipeline.BuildPlayer(GetScenePaths(), playerPath, BuildTarget.Android, BuildOptions.None);
     }
 
@@ -246,6 +259,11 @@ public class HCTools : Editor
     public static void ShowInspector()
     {
         EditorApplication.ExecuteMenuItem("Window/General/Inspector");
+    }
+
+    public static void ForceResolver()
+    {
+        EditorApplication.ExecuteMenuItem("Assets/External Dependency Manager/Android Resolver/Force Resolver");
     }
 }
 #endif
