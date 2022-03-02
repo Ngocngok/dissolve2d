@@ -15,15 +15,14 @@ MonoBehaviour:
   GameName: HyperCat SDK
   GameVersion: 1.0
   BuildVersion: 0
-  BundleVersion: 0
+  BundleVersion: 1
   PackageName: com.hypercat.prototype
   BuildPath: D:/HyperCat Build/
-  AdmobAndroidID: Admob
-  FacebookAppID: Facebook
+  AdmobAndroidID: Admob ID
   InterAd: Inter
   RewardedAd: Reward
   BannerAd: Banner
   AOAListIds:
-  - 123
-  - 4546
-  - 455
+  - Tier 1
+  - Tier 2
+  - Tier 3

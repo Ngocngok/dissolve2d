@@ -25,18 +25,18 @@ public class GameServices : Singleton<GameServices>
 
     public string FirebaseMesssageToken = "";
 
-    public FBManager fbManager;
+    // public FBManager fbManager;
 
     private void Start()
     {
         FirebaseMessaging.TokenRegistrationOnInitEnabled = true;
         InitFirebase();
 
-        if (fbManager == null)
-        {
-            fbManager = new FBManager();
-            fbManager.FirstInit();
-        }
+        // if (fbManager == null)
+        // {
+        //     fbManager = new FBManager();
+        //     fbManager.FirstInit();
+        // }
 
 #if PROTOTYPE
         AppsFlyer.setIsDebug(true);

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Facebook.Unity.Settings;
+// using Facebook.Unity.Settings;
 using GoogleMobileAds.Editor;
 using UnityEditor;
 using UnityEditor.Build.Content;
@@ -230,14 +230,14 @@ public class HCTools : Editor
     [MenuItem("HyperCat Toolkit/Third-party Sdk/Verify Ads Ids")]
     public static void VerifyAdsIds()
     {
-        FacebookSettings.AppIds[0] = GameSetting.FacebookAppID;
-        FacebookSettings.AppLabels[0] = GameSetting.GameName;
+        // FacebookSettings.AppIds[0] = GameSetting.FacebookAppID;
+        // FacebookSettings.AppLabels[0] = GameSetting.GameName;
 
         AppLovinSettings.Instance.AdMobAndroidAppId = GameSetting.AdmobAndroidID;
         GoogleMobileAdsSettings.Instance.GoogleMobileAdsAndroidAppId = GameSetting.AdmobAndroidID;
 
         EditorUtility.SetDirty(AppLovinSettings.Instance);
-        EditorUtility.SetDirty(FacebookSettings.Instance);
+        // EditorUtility.SetDirty(FacebookSettings.Instance);
         AssetDatabase.SaveAssets();
     }
 

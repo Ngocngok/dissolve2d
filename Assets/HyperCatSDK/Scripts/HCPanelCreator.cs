@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using System.Collections;
 using UnityEditor;
 using System.IO;
@@ -83,3 +85,5 @@ public class HCPanelCreator : EditorWindow
         File.WriteAllText(scriptPath + className + ".cs", script);
     }
 }
+
+#endif

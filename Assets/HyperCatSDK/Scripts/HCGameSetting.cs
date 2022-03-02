@@ -10,14 +10,14 @@ public class HCGameSetting : ScriptableObject
 
     public string GameVersion = "1.0";
     public int BuildVersion = 0;
-    public int BundleVersion = 0;
+    public int BundleVersion = 1;
     public string PackageName = "com.hyperat.prototype";
     public string BuildPath = "D:/HyperCat Build/";
 
     [Space, Header("Ads IDs")]
     public string AdmobAndroidID;
 
-    public string FacebookAppID;
+    // public string FacebookAppID;
     public string InterAd;
     public string RewardedAd;
     public string BannerAd;
